@@ -35,11 +35,11 @@ Highlights:
         contentPath = Directory.GetCurrentDirectory();
     }
 
-4) In this sample code you need to pass --console command line parameter to run as a Windows Service. You could change this to pass --console or --debug parameter if you want to run in console mode/debug and have it run as a Windows Service by default.
+4) By default it runs as a service unless it detects you are Debugging or you pass the command line parameter --console
 
 	[Program.cs]
 
-    if (((IList)args).Contains("--console"))
+    if (Debugger.IsAttached || args.Contains("--console"))
     {
         isConsole = true;
     }
