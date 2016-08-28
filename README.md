@@ -8,42 +8,42 @@ Highlights:
 
 1) You have to target .NET 4.6.1 framework. Since this application is intented to run as a Windows Service it makes sense since Linux or Mac don't have a Windows service so it can't be part of the .NET Core framework.
 
-	[project.json]
+    [project.json]
 
-	"frameworks": {
-	"net461": { }
-	},
+    "frameworks": {
+    "net461": { }
+    },
 
 2) You have to use Kestrel web server when running as a Windows Service.
 
-	[Program.cs]
+    [Program.cs]
 
-	var host = new WebHostBuilder()
-	    .UseKestrel()
-	    .UseContentRoot(contentPath)
-	    .UseStartup<Startup>()
-	    .Build();
+    var host = new WebHostBuilder()
+        .UseKestrel()
+        .UseContentRoot(contentPath)
+        .UseStartup<Startup>()
+        .Build();
 
 3) If you are using MVC you need to set the ContentRoot directory.
 
-	[Program.cs]
+    [Program.cs]
 
-	if (isConsole)
-	contentPath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
-	else
-	{
-	contentPath = Directory.GetCurrentDirectory();
-	}
+    if (isConsole)
+        contentPath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
+    else
+    {
+        contentPath = Directory.GetCurrentDirectory();
+    }
 
 4) By default it runs as a service unless it detects you are Debugging or you pass the command line parameter --console
 
-	[Program.cs]
+    [Program.cs]
 
-	if (Debugger.IsAttached || args.Contains("--console"))
-	{
-	isConsole = true;
-	}
-	else
-	{
-	isConsole = false;
-	}
+    if (Debugger.IsAttached || args.Contains("--console"))
+    {
+        isConsole = true;
+    }
+    else
+    {
+        isConsole = false;
+    }
