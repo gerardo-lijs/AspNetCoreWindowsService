@@ -15,21 +15,15 @@ namespace AspNetCoreWindowsService
             string contentPath;
 
             if (Debugger.IsAttached || args.Contains("--console"))
-            {
                 isConsole = true;
-            }
             else
-            {
                 isConsole = false;
-            }
 
             //set ContenRoot directory
             if (isConsole)
                 contentPath = Directory.GetCurrentDirectory();
             else
-            {
                 contentPath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
-            }
 
             var host = new WebHostBuilder()
                 .UseKestrel()
