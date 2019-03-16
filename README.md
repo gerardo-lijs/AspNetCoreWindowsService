@@ -2,7 +2,7 @@
 
 This is a simple sample repository to show how simple it is to run .NET Core and ASP.NET Core as a Windows Service with .NET Core 1.1 and it's obsolete.
 
-With .NET Core 2.2 you can do muche better with: https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/windows-service?view=aspnetcore-2.2
+With .NET Core 2.2 you can do much better with: https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/windows-service?view=aspnetcore-2.2
 
 I tried to keep it bare minimum in order to appreciate what is needed. You can probably modify your current .NET Core API or ASP.NET MVC Project just by copy-pasting a few lines of this code to make it run as a Windows Service!
 
